@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
@@ -116,9 +117,6 @@ public class InChannelFragment extends BaseRecyclerFragment<ChannelUser> impleme
 
     @Override
     protected void doLoadData(int offset, int count) {
-//		channel=VoiceService.getInstance().getChannel();
-//		setTitle(channel.topic);
-//		onDataLoaded(channel.users, false);
         new GetChannel(channel.channel)
                 .setCallback(new SimpleCallback<Channel>(this) {
                     @Override

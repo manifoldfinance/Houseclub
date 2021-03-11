@@ -2,6 +2,7 @@ package me.grishka.houseclub;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,9 +23,12 @@ import me.grishka.appkit.api.ErrorResponse;
 import me.grishka.houseclub.api.ClubhouseSession;
 import me.grishka.houseclub.api.methods.CheckWaitlistStatus;
 import me.grishka.houseclub.api.methods.GetChannel;
+import me.grishka.houseclub.api.methods.GetClub;
 import me.grishka.houseclub.api.methods.GetEvent;
 import me.grishka.houseclub.api.methods.JoinChannel;
 import me.grishka.houseclub.api.model.Channel;
+import me.grishka.houseclub.api.model.Club;
+import me.grishka.houseclub.fragments.ClubFragment;
 import me.grishka.houseclub.fragments.HomeFragment;
 import me.grishka.houseclub.fragments.InChannelFragment;
 import me.grishka.houseclub.fragments.LoginFragment;
@@ -61,7 +65,6 @@ public class MainActivity extends FragmentStackActivity {
                                     ClubhouseSession.isWaitlisted = false;
                                     ClubhouseSession.write();
                                     if (result.isOnboarding) {
-//										showFragmentClearingBackStack(new RegisterFragment());
                                         new AlertDialog.Builder(MainActivity.this)
                                                 .setMessage(R.string.log_in_to_activate)
                                                 .setPositiveButton(R.string.ok, null)
@@ -72,9 +75,6 @@ public class MainActivity extends FragmentStackActivity {
                                     } else {
                                         showFragmentClearingBackStack(new HomeFragment());
                                     }
-//									if(Intent.ACTION_VIEW.equals(getIntent().getAction())){
-//										joinChannelFromIntent();
-//									}
                                 }
                             }
 
